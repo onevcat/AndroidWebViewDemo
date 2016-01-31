@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -27,9 +28,16 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Log.d("web view demo","Clicked, url: " + _editText.getText().toString());
+                showWebViewDialog(_editText.getText().toString());
             }
         });
         _editText.setText("http://onevcat.com");
+    }
+
+    private void showWebViewDialog(String url) {
+        WebViewDialog d = new WebViewDialog(this);
+        d.url = url;
+        d.showMe();
     }
 
     @Override
